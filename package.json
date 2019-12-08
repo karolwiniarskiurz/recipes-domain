@@ -1,0 +1,27 @@
+{
+  "name": "recipes-domain",
+  "version": "1.0.0",
+  "description": "Recipes website domain. With unit tests",
+  "scripts": {
+    "test": "npx jest --watch",
+    "t": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwiniarski97/recipes-domain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kwiniarski97/recipes-domain/issues"
+  },
+  "homepage": "https://github.com/kwiniarski97/recipes-domain#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.7.3"
+  }
+}
