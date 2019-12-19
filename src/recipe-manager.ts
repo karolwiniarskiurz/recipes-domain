@@ -1,17 +1,17 @@
-import { RecipieDetailsInterface } from './interfaces/recipie-details-interface';
+import { RecipieDetails } from './classes/recipie-details';
 import find from 'lodash/find';
 import { FilterBy } from './consts';
-import { RecipeListInterface } from './interfaces/recipe-list-interface';
+import { RecipeList } from './classes/recipe-list';
 
-let recipes: RecipieDetailsInterface[] = [];
+let recipes: RecipieDetails[] = [];
 
 export class RecipeManager {
 
-  addRecipe (recipe: RecipieDetailsInterface): void {
+  addRecipe (recipe: RecipieDetails): void {
     recipes.push(recipe);
   }
 
-  getRecipe (id: number): RecipieDetailsInterface|undefined {
+  getRecipe (id: number): RecipieDetails|undefined {
     return find(recipes, recipe => recipe.id === id);
 
   }
@@ -20,7 +20,7 @@ export class RecipeManager {
     recipes = recipes.filter((recipe) => recipe.id !== id)
   }
 
-  getRecipiesFilteredBy (filterBy: FilterBy, value: string|number): RecipeListInterface {
+  getRecipiesFilteredBy (filterBy: FilterBy, value: string|number): RecipeList {
      const recipeList = RecipeManager.prepareRecipesList((recipe) => recipe[filterBy] === value);
 
      return {
@@ -30,7 +30,7 @@ export class RecipeManager {
 
   }
 
-  private static prepareRecipesList(filterFunction: (recipe: RecipieDetailsInterface) => boolean): RecipeListInterface['recipies'] {
+  private static prepareRecipesList(filterFunction: (recipe: RecipieDetails) => boolean): RecipeList['recipies'] {
     return recipes
       .filter(filterFunction)
       .map((recipe) => {
