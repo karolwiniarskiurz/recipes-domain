@@ -21,6 +21,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "no-case-declarations": [0, "always"],
         "object-curly-spacing": [2, "always"],
         "quotes": ["error", "single"]
     }

@@ -4,5 +4,6 @@ export interface RecipeInterface {
   id: number;
   name: string;
   description: string;
+  mainImageLink: string;
   author: AuthorInterface;
 }

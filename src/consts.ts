@@ -1,5 +1,5 @@
 export enum FilterBy {
-  Title = 'title',
+  Name = 'name',
   TimeToCook = 'timeToCook',
   Level = 'level'
 }
