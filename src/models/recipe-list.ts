@@ -1,11 +1,11 @@
 import { Recipe } from './recipe';
 
 export class RecipeList {
-  recipies: Recipe[];
+  recipes: Recipe[];
   total: number;
 
   constructor(recipies: Recipe[], total: number) {
-    this.recipies = recipies;
+    this.recipes = recipes;
     this.total = total;
   }
 }
