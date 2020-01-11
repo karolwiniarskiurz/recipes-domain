@@ -2,12 +2,13 @@ import { Author } from './author';
 import { Nutritients } from './nutritients';
 import { Indigrent } from './indigrent';
 import { Recipe } from './recipe';
+import { RecipeLevel } from '../enums/recipe-level';
 
 export class RecipeDetails extends Recipe {
   imageLinks: string[];
   steps: string[];
   timeToCook: number;
-  level: number;
+  level: RecipeLevel;
   indigrents: Indigrent[];
   nutritiens: Nutritients;
 
@@ -20,7 +21,7 @@ export class RecipeDetails extends Recipe {
     imageLinks: string[],
     steps: string[],
     timeToCook: number,
-    level: number,
+    level: RecipeLevel,
     indigrents: Indigrent[],
     nutritiens: Nutritients
   ) {
