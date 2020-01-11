@@ -1,17 +1,14 @@
 import { Author } from './author';
 import { Nutritients } from './nutritients';
+import { Indigrent } from './indigrent';
+import { Recipe } from './recipe';
 
-export class RecipieDetails {
-  id: number;
-  name: string;
-  description: string;
-  mainImageLink: string;
-  imageLinks: string;
-  author: Author;
+export class RecipeDetails extends Recipe {
+  imageLinks: string[];
   steps: string[];
   timeToCook: number;
   level: number;
-  indigrents: string[];
+  indigrents: Indigrent[];
   nutritiens: Nutritients;
 
   constructor(
@@ -19,20 +16,16 @@ export class RecipieDetails {
     name: string,
     description: string,
     mainImageLink: string,
-    imageLinks: string,
     author: Author,
+    imageLinks: string[],
     steps: string[],
     timeToCook: number,
     level: number,
-    indigrents: string[],
+    indigrents: Indigrent[],
     nutritiens: Nutritients
   ) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.mainImageLink = mainImageLink;
+    super(id, name, description, mainImageLink, author);
     this.imageLinks = imageLinks;
-    this.author = author;
     this.steps = steps;
     this.timeToCook = timeToCook;
     this.level = level;
