@@ -59,6 +59,9 @@ export class RecipeManager {
     }
   }
 
+  listRecipes(): RecipeList {
+    return new RecipeList(this.recipes, this.recipes.length);
+  }
 
   /**
    * Get Recipies list filtred

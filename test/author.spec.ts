@@ -1,12 +1,16 @@
 import { Author } from '../src/models/author';
 
 describe('Author', () => {
-    // TODO: remove it just examplar test
+    let author: Author;
+    beforeEach(() => {
+        author = new Author(1, 'Jan', 'Kowalski', '123456', 'jan@kowalski.pl', ['frytki']);
+    })
+
+    it('should create', () => {
+        expect(author).toBeTruthy();
+    })
+
     it('should set propers to author object', () => {
-
-        // const options = {}
-        const author = new Author(1, 'Jan', 'Kowalski','123456', 'jan@kowalski.pl', ['frytki']);
-
         expect(author.id).toEqual(1);
         expect(author.name).toEqual('Jan');
         expect(author.lastName).toEqual('Kowalski');
@@ -14,12 +18,4 @@ describe('Author', () => {
         expect(author.email).toEqual('jan@kowalski.pl');
         expect(author.favorites).toContain('frytki');
     })
-
-    // TODO: remove it just examplar test
-    it('should throw an exception', () => {
-        const errorFn = () => { throw new Error() }
-
-        expect(errorFn).toThrowError()
-    })
-
 })
