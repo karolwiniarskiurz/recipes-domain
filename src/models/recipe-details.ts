@@ -1,13 +1,10 @@
 import { Author } from './author';
 import { Nutritients } from './nutritients';
 import { Indigrent } from './indigrent';
+import { Recipe } from './recipe';
 
-export class RecipeDetails {
-  id: number;
-  name: string;
-  description: string;
-  mainImageLink: string;
-  imageLinks: string;
+export class RecipeDetails extends Recipe {
+  imageLinks: string[];
   steps: string[];
   timeToCook: number;
   level: number;
@@ -19,17 +16,15 @@ export class RecipeDetails {
     name: string,
     description: string,
     mainImageLink: string,
-    imageLinks: string,
+    author: Author,
+    imageLinks: string[],
     steps: string[],
     timeToCook: number,
     level: number,
     indigrents: Indigrent[],
     nutritiens: Nutritients
   ) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.mainImageLink = mainImageLink;
+    super(id, name, description, mainImageLink, author);
     this.imageLinks = imageLinks;
     this.steps = steps;
     this.timeToCook = timeToCook;

@@ -13,7 +13,7 @@ describe('RecipeManager', () => {
     it('should add new recipe', () => {
 
         // TODO: mockup objects
-        
+
         const indigrents = [
             new Indigrent('chleb testowy'),
             new Indigrent('polędwica'),
@@ -23,28 +23,28 @@ describe('RecipeManager', () => {
             new Indigrent('lastry sera typu mozarella.')
         ];
 
+        const author = new Author(1, 'Jan', 'Kowalski', '123456', 'jan@kowalski.pl', ['frytki']);
         const nutritiens = new Nutritients(1000, 55, 155, 444);
         const details = new RecipeDetails(
             1,
             'Francesinha',
-            'Portugalskie danie w formie kanapki pochodzące z Porto, jedna z odmian zapiekanki Croque', 
+            'Portugalskie danie w formie kanapki pochodzące z Porto, jedna z odmian zapiekanki Croque',
             'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Francesinha_%285868450579%29.jpg/302px-Francesinha_%285868450579%29.jpg',
-            'https://img.test.pl',
-            ['W pierwszej kolejności zaczynamy od przygotowania sosu.','Na patelni podsmaż polędwicę lekko osoloną oraz plasterki kiełbasy peperoni oraz zwykłej, możesz również wybrać opcje grillowania ich', 'Przygotuj naczynie żaroodporne, ułóż w nim pierwszą kromkę chleba, na niej połóż polędwice, na niej oba rodzaje kiełbas, a na górze plasterek szynki teraz przykryj to drugą kromką. Na wierzch połóż dwa plasterki mozarelli i włóż do piekarnika na około 8 minut tak by ser się rozpuścił.', 'Podawaj w głębokim naczyniu z frytkami, nie zapomnij polać kanapki sosem.'],
+            author,
+            ['https://img.test.pl'],
+            ['W pierwszej kolejności zaczynamy od przygotowania sosu.', 'Na patelni podsmaż polędwicę lekko osoloną oraz plasterki kiełbasy peperoni oraz zwykłej, możesz również wybrać opcje grillowania ich', 'Przygotuj naczynie żaroodporne, ułóż w nim pierwszą kromkę chleba, na niej połóż polędwice, na niej oba rodzaje kiełbas, a na górze plasterek szynki teraz przykryj to drugą kromką. Na wierzch połóż dwa plasterki mozarelli i włóż do piekarnika na około 8 minut tak by ser się rozpuścił.', 'Podawaj w głębokim naczyniu z frytkami, nie zapomnij polać kanapki sosem.'],
             30,
             1,
             indigrents,
             nutritiens
         );
 
-        const author = new Author(1, 'Jan', 'Kowalski','123456', 'jan@kowalski.pl', ['frytki']);
         const recipe = new Recipe(
             1,
-            'Francesinha', 
-            'Portugalskie danie w formie kanapki pochodzące z Porto, jedna z odmian zapiekanki Croque', 
+            'Francesinha',
+            'Portugalskie danie w formie kanapki pochodzące z Porto, jedna z odmian zapiekanki Croque',
             'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Francesinha_%285868450579%29.jpg/302px-Francesinha_%285868450579%29.jpg',
-            author,
-            details
+            author
         );
 
         manager.addRecipe(recipe);
