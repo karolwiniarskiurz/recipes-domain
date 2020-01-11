@@ -4,15 +4,15 @@ import { Author } from '../src/models/author';
 import { RecipeDetails } from '../src/models/recipe-details';
 import { Indigrent } from '../src/models/indigrent';
 import { Nutritients } from '../src/models/nutritients';
+import { EntityNotFoundException } from '../src/exceptions/entity-not-found';
+import { EntityExistsException } from '../src/exceptions/entity-exists';
 
 
 describe('RecipeManager', () => {
 
-    const manager = new RecipeManager();
+    let manager: RecipeManager;
 
-    it('should add new recipe', () => {
-
-        // TODO: mockup objects
+    beforeEach(() => {
 
         const indigrents = [
             new Indigrent('chleb testowy'),
@@ -22,6 +22,7 @@ describe('RecipeManager', () => {
             new Indigrent('podłużne paski kiełbasy;'),
             new Indigrent('lastry sera typu mozarella.')
         ];
+
 
         const author = new Author(1, 'Jan', 'Kowalski', '123456', 'jan@kowalski.pl', ['frytki']);
         const nutritiens = new Nutritients(1000, 55, 155, 444);
@@ -39,27 +40,42 @@ describe('RecipeManager', () => {
             nutritiens
         );
 
-        const recipe = new Recipe(
-            1,
-            'Francesinha',
-            'Portugalskie danie w formie kanapki pochodzące z Porto, jedna z odmian zapiekanki Croque',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Francesinha_%285868450579%29.jpg/302px-Francesinha_%285868450579%29.jpg',
-            author
-        );
+        const recipes = [details]
+        manager = new RecipeManager(recipes)
+    })
 
+    it('should add new recipe', () => {
+        const recipe = new Recipe(2, 'name', 'description', 'http://image.com/image.jpg', {} as Author)
         manager.addRecipe(recipe);
+        expect(manager.recipes.length).toBe(2)
+    })
+
+    it('should throw EntityExistsException when addRecipe with not unique id', () => {
+        const recipe = new Recipe(1, 'name', 'description', 'http://image.com/image.jpg', {} as Author)
+        const addFn = () => manager.addRecipe(recipe)
+        expect(addFn).toThrow(new EntityExistsException())
+    })
+
+
+    it('should delete recipe by id', () => {
+        manager.delete(1);
+        expect(manager.recipes.length).toBe(0)
+    });
+
+    it('should throw EntityNotFoundException when trying to delete non existend recipe', () => {
+        const deleteFn = () => manager.delete(2);
+        expect(deleteFn).toThrow(new EntityNotFoundException())
     })
 
     it('should get recipe by id', () => {
         const recipe = manager.getRecipe(1);
-        expect(typeof recipe).toBe('object');
+        expect(recipe).toBeTruthy();
     });
 
-    it('should delete recipe by id', () => {
-        manager.delete(1);
-        const recipe = manager.getRecipe(1);
-        expect(typeof recipe).toBe('undefined');
-    });
+    it('should throw EntityNotFoundException when getRecipe did not found recipe', () => {
+        const getByIdFN = () => manager.getRecipe(2)
+        expect(getByIdFN).toThrow(new EntityNotFoundException())
+    })
 
 
 })
