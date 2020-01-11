@@ -11,6 +11,7 @@ import { EntityExistsException } from '../src/exceptions/entity-exists';
 describe('RecipeManager', () => {
 
     let manager: RecipeManager;
+    let recipes: Recipe[];
 
     beforeEach(() => {
 
@@ -40,7 +41,7 @@ describe('RecipeManager', () => {
             nutritiens
         );
 
-        const recipes = [details]
+        recipes = [details]
         manager = new RecipeManager(recipes)
     })
 
@@ -77,5 +78,10 @@ describe('RecipeManager', () => {
         expect(getByIdFN).toThrow(new EntityNotFoundException())
     })
 
+    it('should list all recipes when listRecipes called', () => {
+        const recipesList = manager.listRecipes()
+        expect(recipesList.total).toBe(1)
+        expect(recipesList.recipes).toEqual(recipes)
+    })
 
 })
