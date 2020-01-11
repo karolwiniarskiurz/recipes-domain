@@ -5,7 +5,7 @@
 
 # Development
 All of the domain code goes to `/src`. \
-All of the tests go to `/test`. You should name test file like so: `entity.test.ts`
+All of the tests go to `/test`. You should name test file like so: `entity.spec.ts`
 
 # Unit tests
 To run tests run either `npm t` or `npm run test` it will run jest runner with watch mode enabled.
