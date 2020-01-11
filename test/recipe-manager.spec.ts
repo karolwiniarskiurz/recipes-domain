@@ -84,5 +84,4 @@ describe('RecipeManager', () => {
         expect(recipesList.recipes).toEqual(recipes)
     })
 
-
 })
